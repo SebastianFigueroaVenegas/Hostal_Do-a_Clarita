@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="container">
+    <form method="post" action="{% url 'login' %}" class="forma">
+        {% csrf_token %}
+
+        <h2>Bienvenido al sistema de Gestion</h2>
+        <h1>Hostal Doña Clarita</h1>
+
+        <h2>Iniciar Sesión</h2>
+
+        <div style="display: flex; flex-direction: row;">
+            <img src="../static/img/usuario4.png" class="img-login">
+            <input type="text" id="username" name="username" required placeholder="Usuario"><br>
+        </div>
+
+        <div style="display: flex; flex-direction: row;">
+            <img src="../static/img/pass.png" class="img-login">
+            <input type="password" id="password" name="password" required placeholder="Contraseña"><br>
+        </div>
+        <div class="button-box">
+            <button href="{% url 'login' %}">Atras</button>
+            <button type="submit">Ingresar</button>
+        </div>
+    </form>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+</div>
+
+{% endblock %}

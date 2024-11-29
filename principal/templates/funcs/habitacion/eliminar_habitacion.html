@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/habitacion/eliminar_habitacion.css' %}">
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Estás seguro de que deseas eliminar la habitación <strong>{{ habitacion.numero_habitacion }}</strong>?</p>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a href="{% url 'listar_habitaciones' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+body{
+    background-image: url(https://xikara.net/wp-content/uploads/2024/02/tendencias-2024-habitacion-matrimonio-decoracion-xikara.jpeg); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+
+
+.container2{
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.botong{
+    margin-top: 50px;
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/habitacion/habitacion.css' %}">
+
+
+<div class="container">
+    <div class="container2">
+        <a href="{% url 'crear_habitacion' %}" class="btn btn-primary">Agregar Nueva Habitación</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Número de Habitación</th>
+                <th>Tipo de Cama</th>
+                <th>Accesorios</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for habitacion in habitaciones %}
+                <tr>
+                    <td>{{ habitacion.numero_habitacion }}</td>
+                    <td>{{ habitacion.tipo_cama }}</td>
+                    <td>{{ habitacion.accesorios }}</td>
+                    <td>{{ habitacion.precio }}</td>
+                    <td>{{ habitacion.estado }}</td>
+                    <td style="display: flex; flex-direction: row;">
+                        <a href="{% url 'editar_habitacion' habitacion.id %}" class="btn btn-warning" style="margin-right: 10px;">Editar</a>
+                        <a href="{% url 'eliminar_habitacion' habitacion.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container2">
+    <a href="{% url 'index'  %}" class="botong btn btn-primary">Atrás</a>
+</div>
+
+{% endblock %}

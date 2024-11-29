@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/habitacion/editar_habitacion.css' %}">
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <label>Número de Habitación:</label> 
+        <input type="number" name="numero_habitacion" value="{{ habitacion.numero_habitacion }}" required><br>
+        
+        <label>Tipo de Cama:</label> 
+        <input type="text" name="tipo_cama" value="{{ habitacion.tipo_cama }}" required><br>
+        
+        <label>Accesorios:</label> 
+        <input type="text" name="accesorios" value="{{ habitacion.accesorios }}"><br>
+        
+        <label>Precio:</label> 
+        <input type="number" step="0.01" name="precio" value="{{ habitacion.precio }}" required><br>
+        
+        <label>Estado:</label> 
+        <select name="estado">
+            <option value="Disponible" {% if habitacion.estado == "Disponible" %}selected{% endif %}>Disponible</option>
+            <option value="Asignada" {% if habitacion.estado == "Asignada" %}selected{% endif %}>Asignada</option>
+            <option value="Mantenimiento" {% if habitacion.estado == "Mantenimiento" %}selected{% endif %}>Mantenimiento</option>
+        </select><br>
+        
+        <button type="submit" class="btn btn-success">Actualizar</button>
+    </form>
+    <div class="container2">
+        <a href="{% url 'listar_habitaciones' %}" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+</div>
+
+
+{% endblock %}

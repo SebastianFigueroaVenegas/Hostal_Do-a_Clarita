@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    
+    <form method="post" class="forma">
+        {% csrf_token %}
+
+        <h2>Registro de usuario</h2>
+
+        <label for="id_username">Usuario:</label>
+        {{ form.username }}<br>
+        
+        <label for="id_email">Email:</label>
+        {{ form.email }}<br>
+        
+        <label for="id_password1">Contraseña:</label>
+        {{ form.password1 }}<br>
+        
+        <label for="id_password2">Confirmar Contraseña:</label>
+        {{ form.password2 }}<br>
+
+        <label for="id_is_staff">¿Es Recepcionista?</label>
+        {{ form.is_staff }}<br>
+
+        <div class="button-box">
+            <button type="submit">Registrarse</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

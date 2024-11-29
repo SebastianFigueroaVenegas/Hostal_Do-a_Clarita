@@ -1,0 +1,64 @@
+.container {
+    text-align: center;
+    background-color: #00000077;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 500px;
+    height: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 200px;
+
+}
+
+h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 20px;
+
+}
+
+
+/* formulario */
+
+.forma {
+    border: solid 2px rgb(255, 216, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.forma label {
+    font-size: 1em;
+    color: #333;
+}
+
+.forma input {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+.img-login{
+    width: 20px;
+    height: 20px;
+    background-color: aliceblue; 
+    margin-top: 10px; 
+    margin-right: 10px; 
+    border-radius: 4px; 
+}
