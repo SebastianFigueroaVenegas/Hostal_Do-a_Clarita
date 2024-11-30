@@ -90,4 +90,12 @@ class Proveedor(models.Model):
         return self.nombre_proveedor
 
 
+class Venta(models.Model):
+    cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)
+    plato = models.ForeignKey('Comedor', on_delete=models.CASCADE)
+    fecha_venta = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Venta: {self.cliente.nombre} - {self.plato.nombre_plato}'
+
 

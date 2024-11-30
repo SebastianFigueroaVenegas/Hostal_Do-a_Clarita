@@ -19,11 +19,13 @@
             <a href="{% url 'listar_habitaciones' %}" class="btn btn-primary">Gestionar Habitaciones</a>
             <a href="{% url 'lista_clientes' %}" class="btn btn-primary">Gestionar Clientes</a>
             <a href="{% url 'listar_platos' %}" class="btn btn-primary">Gestionar Platos</a>
+            <a href="{% url 'listar_ventas' %}" class="btn btn-primary">Ventas</a>
         {% elif user.is_staff %}
             <a href="{% url 'listar_habitaciones' %}" class="btn btn-primary">Gestionar Habitaciones</a>
             <a href="{% url 'lista_clientes' %}" class="btn btn-primary">Gestionar Clientes</a>
         {% elif user.is_authenticated %}
             <a href="{% url 'listar_platos' %}" class="btn btn-primary">Gestionar Platos</a>
+            <a href="{% url 'listar_ventas' %}" class="btn btn-primary">Ventas</a>
         {% else %}
             <p>Por favor, <a href="{% url 'login' %}">inicia sesión</a> para acceder al sistema.</p>
         {% endif %}

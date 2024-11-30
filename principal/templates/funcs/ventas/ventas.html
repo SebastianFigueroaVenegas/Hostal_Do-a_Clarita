@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/ventas/ventas.css' %}">
+
+
+<div class="container">
+
+    <div class="container2">
+        <a href="{% url 'crear_venta' %}" class="perro btn btn-primary">Registrar Venta</a>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Plato</th>
+                <th>Precio</th>
+                <th>Fecha de Venta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+            <tr>
+                <td>{{ venta.cliente.nombre }}</td>
+                <td>{{ venta.plato.nombre_plato }}</td>
+                <td>${{ venta.plato.precio|floatformat:0 }}</td>
+                <td>{{ venta.fecha_venta }}</td>
+                <td>
+                    <a href="{% url 'eliminar_venta' venta.pk %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="container2">
+        <a href="{% url 'index'  %}" class="botong btn btn-primary">Atrás</a>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

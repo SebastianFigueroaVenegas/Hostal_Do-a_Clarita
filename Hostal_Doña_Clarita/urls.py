@@ -50,5 +50,9 @@ urlpatterns = [
     path('proveedores/<int:pk>/editar/', views.editar_proveedor, name='editar_proveedor'),
     path('proveedores/<int:pk>/eliminar/', views.eliminar_proveedor, name='eliminar_proveedor'),
 
+    path('ventas/', views.listar_ventas, name='listar_ventas'),
+    path('ventas/crear/', views.crear_venta, name='crear_venta'),
+    path('ventas/<int:pk>/eliminar/', views.eliminar_venta, name='eliminar_venta'),
+
 
 ]

@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://czabogados.cl/wp-content/uploads/2021/12/Trato-Proveedores.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+    margin-top: 50px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.btn-primary { background-color: #007bff; color: white; }
+.btn-success { background-color: #28a745; color: white; }
+.btn-warning { background-color: #ffc107; color: black; }
+.btn-danger { background-color: #dc3545; color: white; }
+.btn-secondary { background-color: #6c757d; color: white; }
+
+
+.botong{
+    margin-top: 50px;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 1000px;
+    margin: 20px auto;
+    margin-top: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}

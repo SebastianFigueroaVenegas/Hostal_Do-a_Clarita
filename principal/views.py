@@ -6,7 +6,7 @@ from .forms import CustomUserCreationForm
 from .forms import ClienteForm
 
 
-from .models import Habitacion, Empresa, Cliente, Comedor, Proveedor
+from .models import Habitacion, Empresa, Cliente, Comedor, Proveedor, Venta
 
 
 
@@ -331,3 +331,33 @@ def eliminar_proveedor(request, pk):
 
 
 ###################################################     Proveedor       #######################################################################
+
+
+###################################################     Ventas          #######################################################################
+
+def listar_ventas(request):
+    ventas = Venta.objects.all()
+    return render(request, 'funcs/ventas/ventas.html', {'ventas': ventas})
+
+def crear_venta(request):
+    clientes = Cliente.objects.all()
+    platos = Comedor.objects.all()
+    if request.method == 'POST':
+        cliente_id = request.POST.get('cliente')
+        plato_id = request.POST.get('plato')
+        cliente = get_object_or_404(Cliente, pk=cliente_id)
+        plato = get_object_or_404(Comedor, pk=plato_id)
+        Venta.objects.create(cliente=cliente, plato=plato)
+        return redirect('listar_ventas')
+    return render(request, 'funcs/ventas/crear_venta.html', {'clientes': clientes, 'platos': platos})
+
+def eliminar_venta(request, pk):
+    venta = get_object_or_404(Venta, pk=pk)
+    if request.method == 'POST':
+        venta.delete()
+        return redirect('listar_ventas')
+    return render(request, 'funcs/ventas/eliminar_venta.html', {'venta': venta})
+
+
+
+###################################################     Ventas          #######################################################################
