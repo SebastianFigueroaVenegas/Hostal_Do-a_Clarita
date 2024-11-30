@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/empresa/eliminar_empresa.css' %}">
+
+<form method="post">
+    {% csrf_token %}
+    <p>¿Estás seguro de que deseas eliminar la Empresa <strong>{{ empresa.nombre_empresa }}</strong>?</p>
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a href="{% url 'listar_empresa' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

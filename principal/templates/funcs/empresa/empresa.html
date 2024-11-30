@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/empresa/empresa.css' %}">
+
+<div class="container">
+    <div class="container2">
+        <a href="{% url 'crear_empresa' %}" class="perro btn btn-primary">Agregar Nueva Empresa</a>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Empresa</th>
+                <th>RUT Empresa</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas %}
+                <tr>
+                    <td>{{ empresa.nombre_empresa }}</td>
+                    <td>{{ empresa.rut_empresa }}</td>
+                    <td>{{ empresa.direccion }}</td>
+                    <td>{{ empresa.telefono }}</td>
+                    <td>{{ empresa.email }}</td>
+                    <td>{{ empresa.usuario }}</td>
+                    <td>
+                        <a href="{% url 'editar_empresa' empresa.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'eliminar_empresa' empresa.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="container2">
+        <a href="{% url 'index'  %}" class="botong btn btn-primary">Atrás</a>
+    </div> 
+
+</div>
+
+
+
+{% endblock %}

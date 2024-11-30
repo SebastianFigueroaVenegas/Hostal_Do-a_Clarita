@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/clientes/editar_cliente.css' %}">
+
+<div class="container2">
+
+    <h1>Editar Cliente</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        {{ form.nombre }}
+
+        <label for="rut">RUT:</label>
+        {{ form.rut }}
+
+        <label for="direccion">Dirección:</label>
+        {{ form.direccion }}
+
+        <label for="correo">Correo:</label>
+        {{ form.correo }}
+
+        <label for="telefono">Teléfono:</label>
+        {{ form.telefono }}
+
+        <label for="empresa">Empresa:</label>
+        {{ form.empresa }}
+
+        <label for="habitacion">Habitación:</label>
+        {{ form.habitacion }}
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+</div>
+
+<div class="container">
+    <a href="{% url 'lista_clientes' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+
+
+
+
+
+{% endblock %}

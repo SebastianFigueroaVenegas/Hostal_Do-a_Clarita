@@ -1,6 +1,7 @@
 body{
-    background-image: url(https://xikara.net/wp-content/uploads/2024/02/tendencias-2024-habitacion-matrimonio-decoracion-xikara.jpeg); 
-    background-repeat: no-repeat; 
+    background-color: #333c87;
+    background-image: url(https://www.finedininglovers.com/es/sites/g/files/xknfdk1706/files/2024-10/Risotto%20de%20calabaza.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -22,6 +23,7 @@ form label {
 
 form input[type="text"],
 form input[type="number"],
+form textarea,
 form select {
     width: 100%;
     padding: 8px;
@@ -29,6 +31,10 @@ form select {
     border: 1px solid #ddd;
     border-radius: 3px;
     box-sizing: border-box;
+}
+
+form textarea {
+    resize: vertical;
 }
 
 form button {
@@ -71,17 +77,9 @@ a.btn-secondary:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
 .container2{
     display: flex;
     justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-h1 {
-    color: #ffffff;
-    margin-bottom: 20px;   
 }

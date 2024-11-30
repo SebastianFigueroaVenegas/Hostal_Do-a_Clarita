@@ -6,6 +6,8 @@
 
 
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+
 <div class="container">
     <form method="post" action="{% url 'login' %}" class="forma">
         {% csrf_token %}
@@ -25,7 +27,6 @@
             <input type="password" id="password" name="password" required placeholder="Contraseña"><br>
         </div>
         <div class="button-box">
-            <button href="{% url 'login' %}">Atras</button>
             <button type="submit">Ingresar</button>
         </div>
     </form>

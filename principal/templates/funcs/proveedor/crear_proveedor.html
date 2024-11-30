@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/proveedor/crear_proveedor.css' %}">
+
+
+<div class="container2">
+
+    <h1>Registro de Proveedor</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre_proveedor">Nombre:</label>
+        <input type="text" name="nombre_proveedor" required><br>
+        <label for="rut_proveedor">RUT:</label>
+        <input type="text" name="rut_proveedor" required><br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" name="direccion" required><br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" name="telefono" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+        <label for="rubro">Rubro:</label>
+        <select name="rubro" required>
+            <option value="">-- Selecciona un Rubro --</option>
+            <option value="Carnicería">Carnicería</option>
+            <option value="Verdulería">Verdulería</option>
+            <option value="Pescadería">Pescadería</option>
+            <option value="Tecnología">Tecnología</option>
+            <option value="Ferretería">Ferretería</option>
+            <option value="Artículos de Aseo">Artículos de Aseo</option>
+        </select><br>
+        <button type="submit">Guardar</button>
+    </form>
+
+</div>
+
+<div class="container">
+    <a href="{% url 'listar_proveedores' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+
+
+
+{% endblock %}

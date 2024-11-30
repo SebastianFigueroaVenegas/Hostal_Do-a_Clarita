@@ -1,0 +1,52 @@
+body{
+    background-color: #333c87;
+    background-image: url(https://www.finedininglovers.com/es/sites/g/files/xknfdk1706/files/2024-10/Risotto%20de%20calabaza.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 250px;
+}
+
+form p {
+    font-size: 16px;
+    color: #333;
+}
+
+form button.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+a.btn-secondary {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6c757d;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+a.btn-secondary:hover {
+    background-color: #5a6268;
+}

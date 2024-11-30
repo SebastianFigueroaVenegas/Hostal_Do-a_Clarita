@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="{% static 'css/habitacion/editar_habitacion.css' %}">
 
 <div class="container">
+
+    <h1>Editar Habitación</h1>
+    
     <form method="post">
         {% csrf_token %}
         <label>Número de Habitación:</label> 
@@ -31,9 +34,11 @@
         
         <button type="submit" class="btn btn-success">Actualizar</button>
     </form>
-    <div class="container2">
-        <a href="{% url 'listar_habitaciones' %}" class="btn btn-secondary">Volver a la lista</a>
-    </div>
+
+</div>
+
+<div class="container2">
+    <a href="{% url 'listar_habitaciones' %}" class="btn btn-secondary">Volver a la lista</a>
 </div>
 
 

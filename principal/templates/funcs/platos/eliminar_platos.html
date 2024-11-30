@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/platos/eliminar_platos.css' %}">
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Estás seguro de que deseas eliminar el plato <strong>{{ plato.nombre_plato }}</strong>?</p>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a href="{% url 'listar_platos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

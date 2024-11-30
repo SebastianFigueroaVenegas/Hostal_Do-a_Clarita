@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/empresa/editar_empresa.css' %}">
+
+
+<div class="container2">
+
+    <h1>Editar Empresa</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre Empresa:</label> 
+        <input type="text" name="nombre_empresa" value="{{ empresa.nombre_empresa }}" required><br>
+        
+        <label>RUT Empresa:</label> 
+        <input type="text" name="rut_empresa" value="{{ empresa.rut_empresa }}" required><br>
+        
+        <label>Dirección:</label> 
+        <input type="text" name="direccion" value="{{ empresa.direccion }}" required><br>
+        
+        <label>Teléfono:</label> 
+        <input type="text" name="telefono" value="{{ empresa.telefono }}" required><br>
+        
+        <label>Email:</label> 
+        <input type="email" name="email" value="{{ empresa.email }}" required><br>
+        
+        <label>Usuario:</label> 
+        <input type="text" name="usuario" value="{{ empresa.usuario }}" required><br>
+        
+        <label>Contraseña:</label> 
+        <input type="password" name="contraseña" required><br>
+        
+        <button type="submit" class="btn btn-success">Actualizar</button>
+    </form>
+
+</div>
+
+<div class="container">
+    <a href="{% url 'listar_empresa' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+
+
+
+{% endblock %}

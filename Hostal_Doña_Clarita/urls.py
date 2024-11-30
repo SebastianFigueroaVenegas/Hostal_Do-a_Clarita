@@ -30,5 +30,25 @@ urlpatterns = [
     path('habitaciones/editar/<int:id>/', views.editar_habitacion, name='editar_habitacion'),
     path('habitaciones/eliminar/<int:id>/', views.eliminar_habitacion, name='eliminar_habitacion'),
 
+    path('empresas/', views.listar_empresa, name='listar_empresa'),
+    path('empresas/crear/', views.crear_empresa, name='crear_empresa'),
+    path('empresas/editar/<int:id>/', views.editar_empresa, name='editar_empresa'),
+    path('empresas/eliminar/<int:id>/', views.eliminar_empresa, name='eliminar_empresa'),
+
+    path('clientes/', views.lista_clientes, name='lista_clientes'),
+    path('clientes/nuevo/', views.crear_cliente, name='crear_cliente'),
+    path('clientes/<int:pk>/editar/', views.editar_cliente, name='editar_cliente'),
+    path('clientes/<int:pk>/eliminar/', views.eliminar_cliente, name='eliminar_cliente'),
+
+    path('platos/', views.listar_platos, name='listar_platos'),
+    path('platos/crear/', views.crear_plato, name='crear_plato'),
+    path('platos/editar/<int:id>/', views.editar_plato, name='editar_plato'),
+    path('platos/eliminar/<int:id>/', views.eliminar_plato, name='eliminar_plato'),
+
+    path('proveedores/', views.listar_proveedores, name='listar_proveedores'),
+    path('proveedores/crear/', views.crear_proveedor, name='crear_proveedor'),
+    path('proveedores/<int:pk>/editar/', views.editar_proveedor, name='editar_proveedor'),
+    path('proveedores/<int:pk>/eliminar/', views.eliminar_proveedor, name='eliminar_proveedor'),
+
 
 ]

@@ -28,7 +28,7 @@
                     <td>{{ habitacion.numero_habitacion }}</td>
                     <td>{{ habitacion.tipo_cama }}</td>
                     <td>{{ habitacion.accesorios }}</td>
-                    <td>{{ habitacion.precio }}</td>
+                    <td style="white-space: nowrap;">$ {{ habitacion.precio|floatformat:0 }}</td>
                     <td>{{ habitacion.estado }}</td>
                     <td style="display: flex; flex-direction: row;">
                         <a href="{% url 'editar_habitacion' habitacion.id %}" class="btn btn-warning" style="margin-right: 10px;">Editar</a>

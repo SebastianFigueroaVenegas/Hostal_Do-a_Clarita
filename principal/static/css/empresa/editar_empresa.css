@@ -1,7 +1,28 @@
-body{
-    background-image: url(https://xikara.net/wp-content/uploads/2024/02/tendencias-2024-habitacion-matrimonio-decoracion-xikara.jpeg); 
-    background-repeat: no-repeat; 
-    background-size: cover;
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://www.aycelaborytax.com/wp-content/uploads/2019/06/gestion-clientes-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.container2 {
+    text-align: center;
+    background-color: #00000077;
+    border-radius: 8px;
+    width: 500px;
+    height: 750px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 20px;   
 }
 
 form {
@@ -21,8 +42,8 @@ form label {
 }
 
 form input[type="text"],
-form input[type="number"],
-form select {
+form input[type="email"],
+form input[type="password"] {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -60,28 +81,10 @@ a.btn-secondary:hover {
     background-color: #5a6268;
 }
 
-.container{
-    text-align: center;
-    background-color: #00000077;
-    border-radius: 8px;
-    width: 500px;
-    height: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
-.container2{
+.container{
     display: flex;
     justify-content: center;
     margin-top: 40px;
     margin-bottom: 40px;
-}
-
-h1 {
-    color: #ffffff;
-    margin-bottom: 20px;   
 }

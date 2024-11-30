@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/platos/crear_platos.css' %}">
+
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre del Plato:</label> 
+        <input type="text" name="nombre_plato" required><br>
+        
+
+        <label>Tipo de Servicio:</label> 
+        <select name="tipo_servicio">
+            <option value="Ejecutivo">Ejecutivo</option>
+            <option value="Especial">Especial</option>
+            <option value="General">General</option>
+        </select><br>
+        
+        <label>Precio:</label> 
+        <input type="number" step="0.01" name="precio" required><br>
+        
+        <label>Descripción:</label> 
+        <textarea name="descripcion" rows="3" required></textarea><br>
+        
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+
+</div>
+
+<div class="container2">
+    <a href="{% url 'listar_platos' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+
+
+
+
+{% endblock %}

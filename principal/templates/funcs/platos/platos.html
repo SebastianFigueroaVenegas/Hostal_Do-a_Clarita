@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/platos/platos.css' %}">
+
+<div class="container">
+    <div class="container2">
+        <a href="{% url 'crear_plato' %}" class="btn btn-primary">Agregar Nuevo Plato</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Plato</th>
+                <th>Tipo de Servicio</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plato in platos %}
+                <tr>
+                    <td>{{ plato.nombre_plato }}</td>
+                    <td>{{ plato.tipo_servicio }}</td>
+                    <td style="white-space: nowrap;">$ {{ plato.precio|floatformat:0 }}</td>
+                    <td>{{ plato.descripcion }}</td>
+                    <td style="display: flex; flex-direction: row;">
+                        <a href="{% url 'editar_plato' plato.id %}" class="btn btn-warning" style="margin-right: 10px;">Editar</a>
+                        <a href="{% url 'eliminar_plato' plato.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container2">
+    <a href="{% url 'index'  %}" class="botong btn btn-primary">Atrás</a>
+</div>
+
+
+{% endblock %}

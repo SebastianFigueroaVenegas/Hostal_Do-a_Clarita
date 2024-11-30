@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="{% static 'css/habitacion/crear_habitacion.css' %}">
 
 <div class="container">
+
+    <h1>Registro de Habitación</h1>
+    
     <form method="post">
         {% csrf_token %}
         <label>Número de Habitación:</label> 
@@ -24,7 +27,7 @@
         <input type="text" name="accesorios"><br>
         
         <label>Precio:</label> 
-        <input type="number" step="0.01" name="precio" required><br>
+        <input type="number" name="precio" required><br>
         
         <label>Estado:</label> 
         <select name="estado">
@@ -35,10 +38,10 @@
         
         <button type="submit" class="btn btn-success">Guardar</button>
     </form>
-    <div class="container2">
-        <a href="{% url 'listar_habitaciones' %}" class="btn btn-secondary">Volver a la lista</a>
-    </div>
-    
+</div>
+
+<div class="container2">
+    <a href="{% url 'listar_habitaciones' %}" class="btn btn-secondary">Volver a la lista</a>
 </div>
 
 
