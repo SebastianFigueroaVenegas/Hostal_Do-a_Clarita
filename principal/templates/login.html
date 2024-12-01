@@ -13,7 +13,7 @@
         {% csrf_token %}
 
         <h2>Bienvenido al sistema de Gestion</h2>
-        <h1>Hostal Doña Clarita</h1>
+        <h1>- Hostal Doña Clarita -</h1>
 
         <h2>Iniciar Sesión</h2>
 
@@ -27,7 +27,7 @@
             <input type="password" id="password" name="password" required placeholder="Contraseña"><br>
         </div>
         <div class="button-box">
-            <button type="submit">Ingresar</button>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
         </div>
     </form>
     {% if error_message %}

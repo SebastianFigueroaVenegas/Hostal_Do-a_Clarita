@@ -25,8 +25,11 @@
         <label for="id_password2">Confirmar Contraseña:</label>
         {{ form.password2 }}<br>
 
-        <label for="id_is_staff">¿Es Recepcionista?</label>
-        {{ form.is_staff }}<br>
+        <!-- <label for="id_is_staff">¿Es Recepcionista?</label>
+        {{ form.is_staff }}<br> -->
+
+        <label for="is_staff">¿Es Recepcionista?</label>
+        <input type="checkbox" name="is_staff" id="is_staff">
 
         <div class="button-box">
             <a href="{% url 'index' %}" class="btn btn-secondary">Atras</a>
