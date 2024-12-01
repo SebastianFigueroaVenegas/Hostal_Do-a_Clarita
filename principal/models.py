@@ -97,5 +97,14 @@ class Venta(models.Model):
 
     def __str__(self):
         return f'Venta: {self.cliente.nombre} - {self.plato.nombre_plato}'
+    
+
+class Factura(models.Model):
+    cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)
+    fecha_emision = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Factura - {self.cliente.nombre} - {self.fecha_emision}'
+
 
 

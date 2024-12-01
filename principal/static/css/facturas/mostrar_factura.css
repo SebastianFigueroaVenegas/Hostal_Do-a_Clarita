@@ -1,0 +1,146 @@
+body{
+    background-image: url(https://xikara.net/wp-content/uploads/2024/02/tendencias-2024-habitacion-matrimonio-decoracion-xikara.jpeg); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 350px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+a.btn-secondary {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6c757d;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+a.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.container{
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 500px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;   
+}
+
+.container img {
+    margin-top: 40px;
+    height: 60px;
+    width: 60px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+
+}
+
+.btn {
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.platos-container {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.platos-container table {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    border-collapse: collapse; /* Evita espacios entre bordes */
+}
+
+.platos-container th,
+.platos-container td {
+    border: 1px solid #ddd; /* Borde alrededor de cada celda */
+    padding: 10px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    font-size: 16px; /* Tamaño del texto */
+}
+
+.platos-container th {
+    background-color: #007bff; /* Fondo del encabezado */
+    color: white; /* Texto blanco */
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+.platos-container tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fondo para filas pares */
+}
+
+.platos-container tr:hover {
+    background-color: #e9ecef; /* Fondo al pasar el cursor */
+}

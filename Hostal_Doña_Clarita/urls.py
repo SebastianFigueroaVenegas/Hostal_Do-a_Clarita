@@ -54,5 +54,9 @@ urlpatterns = [
     path('ventas/crear/', views.crear_venta, name='crear_venta'),
     path('ventas/<int:pk>/eliminar/', views.eliminar_venta, name='eliminar_venta'),
 
+    path('facturas/', views.listar_facturas, name='listar_facturas'),
+    path('facturas/<int:cliente_id>/', views.mostrar_factura, name='mostrar_factura'),
+    path('facturas/<int:cliente_id>/descargar/', views.descargar_factura, name='descargar_factura'),
+
 
 ]

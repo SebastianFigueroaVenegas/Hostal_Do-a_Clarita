@@ -5,6 +5,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from .forms import ClienteForm
 
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+
 
 from .models import Habitacion, Empresa, Cliente, Comedor, Proveedor, Venta
 
@@ -361,3 +365,68 @@ def eliminar_venta(request, pk):
 
 
 ###################################################     Ventas          #######################################################################
+
+
+###################################################     Facturas        #######################################################################
+
+
+def listar_facturas(request):
+    clientes = Cliente.objects.all()
+    return render(request, 'funcs/facturas/facturas.html', {'clientes': clientes})
+
+def mostrar_factura(request, cliente_id):
+    cliente = get_object_or_404(Cliente, pk=cliente_id)
+    ventas = Venta.objects.filter(cliente=cliente)
+    habitacion = cliente.habitacion 
+
+
+    total_habitacion = habitacion.precio if habitacion else 0
+    total_platos = sum(venta.plato.precio for venta in ventas)
+    total = total_habitacion + total_platos
+
+    return render(request, 'funcs/facturas/mostrar_factura.html', {
+        'cliente': cliente,
+        'ventas': ventas,
+        'habitacion': habitacion,
+        'total_habitacion': total_habitacion,
+        'total_platos': total_platos,
+        'total': total,
+    })
+
+def descargar_factura(request, cliente_id):
+    cliente = get_object_or_404(Cliente, pk=cliente_id)
+    ventas = Venta.objects.filter(cliente=cliente)
+    habitacion = cliente.habitacion
+
+
+    total_habitacion = habitacion.precio if habitacion else 0
+    total_platos = sum(venta.plato.precio for venta in ventas)
+    total = total_habitacion + total_platos
+
+
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer)
+    p.drawString(100, 800, f"Factura para {cliente.nombre}")
+    p.drawString(100, 780, f"RUT: {cliente.rut}")
+    if habitacion:
+        p.drawString(100, 760, f"Habitación: {habitacion.numero_habitacion} - ${total_habitacion}")
+    p.drawString(100, 740, "Platos:")
+    y = 720
+    for venta in ventas:
+        p.drawString(120, y, f"{venta.plato.nombre_plato}: ${venta.plato.precio}")
+        y -= 20
+    p.drawString(100, y - 20, f"Total: ${total}")
+    p.showPage()
+    p.save()
+
+    buffer.seek(0)
+    return HttpResponse(buffer, content_type='application/pdf')
+
+
+
+
+
+
+
+
+###################################################     Facturas        #######################################################################

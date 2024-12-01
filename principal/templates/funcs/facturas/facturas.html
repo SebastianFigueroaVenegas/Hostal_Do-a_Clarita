@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/facturas/facturas.css' %}">
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>RUT</th>
+                <th>Habitación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.rut }}</td>
+                <td>
+                    {% if cliente.habitacion %}
+                        {{ cliente.habitacion.numero_habitacion }}
+                    {% else %}
+                        Sin habitación
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'mostrar_factura' cliente.id %}" class="btn btn-warning">Generar Factura</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container2">
+    <a href="{% url 'index'  %}" class="botong btn btn-primary">Atrás</a>
+</div>
+
+{% endblock %}
