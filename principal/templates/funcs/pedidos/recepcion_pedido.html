@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/pedidos/recepcion_pedido.css' %}">
+
+<div class="container">
+    <h1>Recepción de Pedido</h1>
+    <form method="post" id="recepcionForm">
+        {% csrf_token %}
+        <ul>
+            {% for item in items %}
+                <li>
+                    <input type="checkbox" name="item_{{ forloop.counter }}" id="item_{{ forloop.counter }}" required>
+                    <label for="item_{{ forloop.counter }}">{{ item }}</label>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
+    </form>
+</div>
+
+<div class="container2">
+    <a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+<script>
+    document.getElementById('recepcionForm').addEventListener('submit', function(event) {
+        const allChecked = Array.from(this.querySelectorAll('input[type="checkbox"]')).every(input => input.checked);
+        if (!allChecked) {
+            event.preventDefault();
+            alert("Por favor, confirma todos los artículos antes de continuar.");
+        } else {
+            if (!confirm("¿Estás seguro de confirmar la recepción del pedido?")) {
+                event.preventDefault();
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+{% endblock %}

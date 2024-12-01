@@ -29,6 +29,7 @@
                 <td>{{ pedido.id }}</td>
                 <td>
                     <a href="{% url 'ver_pedido' pedido.id %}" class="btn btn-warning">Ver</a>
+                    <a href="{% url 'recepcion_pedido' pedido.id %}" class="btn btn-danger">Recepción</a>
                 </td>
             </tr>
             {% endfor %}

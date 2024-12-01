@@ -8,6 +8,7 @@ from .forms import ClienteForm
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.utils import ImageReader
@@ -526,6 +527,25 @@ def ver_pedido(request, pedido_id):
     return render(request, 'funcs/pedidos/ver_pedido.html', {
         'pedido': pedido,
         'descripcion_lista': descripcion_lista,  # Pasa la lista a la plantilla
+    })
+
+def recepcion_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    descripcion_items = pedido.descripcion.split('-')  # Divide la descripción en una lista
+
+    if request.method == 'POST':
+        # Verifica que todos los artículos hayan sido confirmados
+        all_checked = all(key.startswith('item_') for key in request.POST.keys() if key != 'csrfmiddlewaretoken')
+        if all_checked:
+            pedido.delete()  # Elimina el pedido
+            messages.success(request, "Pedido confirmado y eliminado con éxito.")
+            return redirect('listar_pedidos')  # Redirige a la lista de pedidos
+        else:
+            messages.error(request, "Por favor, confirma todos los artículos antes de continuar.")
+    
+    return render(request, 'funcs/pedidos/recepcion_pedido.html', {
+        'pedido': pedido,
+        'items': descripcion_items,
     })
 
 
