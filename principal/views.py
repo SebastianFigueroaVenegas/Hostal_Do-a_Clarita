@@ -9,6 +9,10 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.utils import ImageReader
+
+
 
 from .models import Habitacion, Empresa, Cliente, Comedor, Proveedor, Venta
 
@@ -398,31 +402,97 @@ def descargar_factura(request, cliente_id):
     ventas = Venta.objects.filter(cliente=cliente)
     habitacion = cliente.habitacion
 
-
     total_habitacion = habitacion.precio if habitacion else 0
     total_platos = sum(venta.plato.precio for venta in ventas)
     total = total_habitacion + total_platos
 
+    # Crear el PDF en memoria
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="Factura_{cliente.nombre}.pdf"'
 
-    buffer = BytesIO()
-    p = canvas.Canvas(buffer)
-    p.drawString(100, 800, f"Factura para {cliente.nombre}")
-    p.drawString(100, 780, f"RUT: {cliente.rut}")
+    p = canvas.Canvas(response, pagesize=letter)
+    width, height = letter
+
+    # Ruta del ícono
+    icon_path = "principal/static/img/1.png"
+    icon_width = 50
+    icon_height = 50
+
+    # Dibuja el ícono en la esquina superior izquierda
+    try:
+        icon = ImageReader(icon_path)
+        p.drawImage(icon, 50, height - 100, width=icon_width, height=icon_height)
+    except:
+        pass  # Si no encuentra el ícono, simplemente lo omite
+
+    # Centrar el título considerando la imagen
+    title = "Factura"
+    title_font = "Helvetica-Bold"
+    title_size = 20
+    p.setFont(title_font, title_size)
+
+    # Ancho del texto del título
+    title_width = p.stringWidth(title, title_font, title_size)
+
+    # Calcula la posición X del título asegurando que se ajuste con la imagen
+    title_x = max((width - title_width) / 2, 50 + icon_width + 10)
+    p.drawString(title_x, height - 60, title)
+
+    # Título "Datos" y su línea
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, height - 120, "Datos")
+    p.line(50, height - 130, width - 50, height - 130)  # Línea debajo del título "Datos"
+
+    # Espacio debajo de la línea de "Datos"
+    y = height - 150
+
+    # Información del cliente
+    p.setFont("Helvetica", 12)
+    p.drawString(50, y, f"Nombre: {cliente.nombre}")
+    y -= 20
+    p.drawString(50, y, f"RUT: {cliente.rut}")
+    y -= 20
     if habitacion:
-        p.drawString(100, 760, f"Habitación: {habitacion.numero_habitacion} - ${total_habitacion}")
-    p.drawString(100, 740, "Platos:")
-    y = 720
-    for venta in ventas:
-        p.drawString(120, y, f"{venta.plato.nombre_plato}: ${venta.plato.precio}")
+        p.drawString(50, y, f"Habitación: {habitacion.numero_habitacion}")
         y -= 20
-    p.drawString(100, y - 20, f"Total: ${total}")
+
+    # Título "Detalles de Servicios" y su línea
+    y -= 20  # Espacio adicional antes de "Detalles de Servicios"
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, y, "Detalles de Servicios")
+    p.line(50, y - 10, width - 50, y - 10)  # Línea debajo del título "Detalles de Servicios"
+
+    # Espacio debajo de la línea de "Detalles de Servicios"
+    y -= 30
+
+    # Tabla de detalles
+    p.setFont("Helvetica", 12)
+    p.drawString(50, y, "Descripción")
+    p.drawString(400, y, "Precio")
+    y -= 20
+
+    # Agregar los detalles de la habitación
+    if habitacion:
+        p.drawString(50, y, "Habitación")
+        p.drawString(400, y, f"${total_habitacion:,.0f}")
+        y -= 20
+
+    # Agregar los detalles de los platos
+    for venta in ventas:
+        p.drawString(50, y, venta.plato.nombre_plato)
+        p.drawString(400, y, f"${venta.plato.precio:,.0f}")
+        y -= 20
+
+    # Total
+    p.setFont("Helvetica-Bold", 14)
+    p.drawString(50, y - 20, "Total:")
+    p.drawString(400, y - 20, f"${total:,.0f}")
+
+    # Finalizar el PDF
     p.showPage()
     p.save()
 
-    buffer.seek(0)
-    return HttpResponse(buffer, content_type='application/pdf')
-
-
+    return response
 
 
 
