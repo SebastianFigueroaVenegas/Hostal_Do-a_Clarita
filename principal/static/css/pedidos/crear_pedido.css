@@ -1,0 +1,92 @@
+body{
+    background-image: url(https://xikara.net/wp-content/uploads/2024/02/tendencias-2024-habitacion-matrimonio-decoracion-xikara.jpeg); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 350px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+a.btn-secondary {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6c757d;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+a.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.container{
+    text-align: center;
+    background-color: #00000077;
+    border-radius: 8px;
+    width: 500px;
+    height: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 20px;   
+}
+
+p {
+    font-size: 11px;
+}

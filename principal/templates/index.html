@@ -21,6 +21,8 @@
             <a href="{% url 'listar_platos' %}" class="btn btn-primary">Gestionar Platos</a>
             <a href="{% url 'listar_ventas' %}" class="btn btn-primary">Ventas</a>
             <a href="{% url 'listar_facturas' %}" class="btn btn-primary">Facturas</a>
+            <a href="{% url 'listar_pedidos' %}" class="btn btn-primary">Generar Pedido</a>
+            <a href="{% url 'listar_pedidos' %}" class="btn btn-primary">Recepción Pedido</a>
         {% elif user.is_staff %}
             <a href="{% url 'listar_habitaciones' %}" class="btn btn-primary">Gestionar Habitaciones</a>
             <a href="{% url 'lista_clientes' %}" class="btn btn-primary">Gestionar Clientes</a>
@@ -28,6 +30,8 @@
         {% elif user.is_authenticated %}
             <a href="{% url 'listar_platos' %}" class="btn btn-primary">Gestionar Platos</a>
             <a href="{% url 'listar_ventas' %}" class="btn btn-primary">Ventas</a>
+            <a href="{% url 'listar_pedidos' %}" class="btn btn-primary">Generar Pedido</a>
+            <a href="{% url 'listar_pedidos' %}" class="btn btn-primary">Recepción Pedido</a>
         {% else %}
             <p>Por favor, <a href="{% url 'login' %}">inicia sesión</a> para acceder al sistema.</p>
         {% endif %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/pedidos/crear_pedido.css' %}">
+
+<div class="container">
+    <h1>Generar Pedido</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="proveedor">Proveedor:</label>
+        <select name="proveedor" id="proveedor" required>
+            {% for proveedor in proveedores %}
+            <option value="{{ proveedor.id }}">{{ proveedor.nombre_proveedor }} - {{ proveedor.rubro }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="descripcion">Descripción:</label>
+        <p>El formato de la descripcion tiene que ser: xxxxxx-xxxxxx-xxxxx</p>
+        <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
+        <br>
+        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas guardar este pedido, no podrás eliminarlo ni editarlo?')">Guardar</button>
+    </form>
+</div>
+
+<div class="container2">
+    <a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+
+{% endblock %}

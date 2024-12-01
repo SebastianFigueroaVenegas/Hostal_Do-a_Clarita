@@ -105,6 +105,16 @@ class Factura(models.Model):
 
     def __str__(self):
         return f'Factura - {self.cliente.nombre} - {self.fecha_emision}'
+    
+
+class Pedido(models.Model):
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
+    descripcion = models.TextField()
+    fecha_pedido = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Pedido {self.id} - {self.proveedor.nombre_proveedor}"
+    
 
 
 

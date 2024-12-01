@@ -14,7 +14,7 @@ from reportlab.lib.utils import ImageReader
 
 
 
-from .models import Habitacion, Empresa, Cliente, Comedor, Proveedor, Venta
+from .models import Habitacion, Empresa, Cliente, Comedor, Proveedor, Venta, Pedido
 
 
 
@@ -406,47 +406,46 @@ def descargar_factura(request, cliente_id):
     total_platos = sum(venta.plato.precio for venta in ventas)
     total = total_habitacion + total_platos
 
-    # Crear el PDF en memoria
+
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="Factura_{cliente.nombre}.pdf"'
 
     p = canvas.Canvas(response, pagesize=letter)
     width, height = letter
 
-    # Ruta del ícono
+
     icon_path = "principal/static/img/1.png"
     icon_width = 50
     icon_height = 50
 
-    # Dibuja el ícono en la esquina superior izquierda
+
     try:
         icon = ImageReader(icon_path)
         p.drawImage(icon, 50, height - 100, width=icon_width, height=icon_height)
     except:
-        pass  # Si no encuentra el ícono, simplemente lo omite
+        pass  
 
-    # Centrar el título considerando la imagen
     title = "Factura"
     title_font = "Helvetica-Bold"
     title_size = 20
     p.setFont(title_font, title_size)
 
-    # Ancho del texto del título
+
     title_width = p.stringWidth(title, title_font, title_size)
 
-    # Calcula la posición X del título asegurando que se ajuste con la imagen
+
     title_x = max((width - title_width) / 2, 50 + icon_width + 10)
     p.drawString(title_x, height - 60, title)
 
-    # Título "Datos" y su línea
+   
     p.setFont("Helvetica-Bold", 14)
     p.drawString(50, height - 120, "Datos")
-    p.line(50, height - 130, width - 50, height - 130)  # Línea debajo del título "Datos"
+    p.line(50, height - 130, width - 50, height - 130)  
 
-    # Espacio debajo de la línea de "Datos"
+   
     y = height - 150
 
-    # Información del cliente
+
     p.setFont("Helvetica", 12)
     p.drawString(50, y, f"Nombre: {cliente.nombre}")
     y -= 20
@@ -456,39 +455,38 @@ def descargar_factura(request, cliente_id):
         p.drawString(50, y, f"Habitación: {habitacion.numero_habitacion}")
         y -= 20
 
-    # Título "Detalles de Servicios" y su línea
-    y -= 20  # Espacio adicional antes de "Detalles de Servicios"
+
+    y -= 20  
     p.setFont("Helvetica-Bold", 14)
     p.drawString(50, y, "Detalles de Servicios")
-    p.line(50, y - 10, width - 50, y - 10)  # Línea debajo del título "Detalles de Servicios"
+    p.line(50, y - 10, width - 50, y - 10)  
 
-    # Espacio debajo de la línea de "Detalles de Servicios"
+
     y -= 30
 
-    # Tabla de detalles
+
     p.setFont("Helvetica", 12)
     p.drawString(50, y, "Descripción")
     p.drawString(400, y, "Precio")
     y -= 20
 
-    # Agregar los detalles de la habitación
+
     if habitacion:
         p.drawString(50, y, "Habitación")
         p.drawString(400, y, f"${total_habitacion:,.0f}")
         y -= 20
 
-    # Agregar los detalles de los platos
     for venta in ventas:
         p.drawString(50, y, venta.plato.nombre_plato)
         p.drawString(400, y, f"${venta.plato.precio:,.0f}")
         y -= 20
 
-    # Total
+
     p.setFont("Helvetica-Bold", 14)
     p.drawString(50, y - 20, "Total:")
     p.drawString(400, y - 20, f"${total:,.0f}")
 
-    # Finalizar el PDF
+
     p.showPage()
     p.save()
 
@@ -500,3 +498,36 @@ def descargar_factura(request, cliente_id):
 
 
 ###################################################     Facturas        #######################################################################
+
+
+###################################################     Pedidos         #######################################################################
+
+def listar_pedidos(request):
+    pedidos = Pedido.objects.all()
+    return render(request, 'funcs/pedidos/pedido.html', {'pedidos': pedidos})
+
+def crear_pedido(request):
+    if request.method == 'POST':
+        proveedor_id = request.POST.get('proveedor')
+        descripcion = request.POST.get('descripcion')
+
+        if proveedor_id and descripcion:
+            proveedor = get_object_or_404(Proveedor, id=proveedor_id)
+            Pedido.objects.create(proveedor=proveedor, descripcion=descripcion)
+            messages.success(request, "Pedido creado exitosamente.")
+            return redirect('listar_pedidos')
+    
+    proveedores = Proveedor.objects.all()
+    return render(request, 'funcs/pedidos/crear_pedido.html', {'proveedores': proveedores})
+
+def ver_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    descripcion_lista = pedido.descripcion.split('-')  # Divide la descripción por los guiones
+    return render(request, 'funcs/pedidos/ver_pedido.html', {
+        'pedido': pedido,
+        'descripcion_lista': descripcion_lista,  # Pasa la lista a la plantilla
+    })
+
+
+
+###################################################     Pedidos         #######################################################################

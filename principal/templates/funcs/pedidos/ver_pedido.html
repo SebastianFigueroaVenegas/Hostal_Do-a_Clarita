@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/pedidos/ver_pedido.css' %}">
+
+<div class="container">
+    <h1>Detalle del Pedido</h1>
+    <p><strong>Proveedor:</strong> {{ pedido.proveedor.nombre_proveedor }}</p>
+    <p><strong>Rubro:</strong> {{ pedido.proveedor.rubro }}</p>
+    <p>--------------------------------------------------------</p>
+    <p><strong>Descripción:</strong></p>
+    <ul>
+        {% for item in descripcion_lista %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <p>--------------------------------------------------------</p>
+    <p><strong>Fecha de Pedido:</strong> {{ pedido.fecha_pedido }}</p>
+</div>
+<div class="container2">
+    <a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+
+{% endblock %}
