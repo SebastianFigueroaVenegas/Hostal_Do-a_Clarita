@@ -1,3 +1,10 @@
+body{
+    background-image: url(https://bodegasamerica.com/wp-content/uploads/2024/04/Cajas-para-almacenaje.webp); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+
 .container {
     text-align: left;
     background-color: #ffffff;

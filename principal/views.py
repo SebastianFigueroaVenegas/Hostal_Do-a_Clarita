@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from .forms import ClienteForm
 
 from io import BytesIO
@@ -49,16 +50,26 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        if 'is_staff' in request.POST:
+            form = CustomUserCreationForm(request.POST)
+        else:
+            form = UserCreationForm(request.POST)
+
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_staff = form.cleaned_data['is_staff']  # Toma el valor del formulario
+       
+            if isinstance(form, CustomUserCreationForm):
+                user.is_staff = True
+            else:
+                user.is_staff = False  
             user.save()
-            messages.success(request, 'Cuenta creada exitosamente.')
-            return redirect('login')
+            messages.success(request, 'Usuario registrado exitosamente.')
+            return redirect('index')
     else:
-        form = CustomUserCreationForm()
+        form = CustomUserCreationForm() 
     return render(request, 'registro.html', {'form': form})
+
+
 
 
 

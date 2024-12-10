@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-image: url(https://www.hoteles.cl/galeriasitios/Och/Och_12589_Lugar-01-Frontis.jpg);
+    background-image: url(https://brighton.valparaiso-hotels.com/data/Images/OriginalPhoto/15806/1580618/1580618627/image-valparaiso-hotel-brighton-4.JPEG);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -67,17 +67,29 @@ main {
 /* footer */
 
 footer {
-    background-color: #333;
-    color: aliceblue;
+    font-size: 12px !important; /* Forzamos el tamaño pequeño para todo */
+    background-color: #444;
+    color: #f1f1f1;
     width: 100%;
-    padding: 20px;
-    bottom: 0;
-    left: 0;
+    padding: 10px 15px;
     text-align: center;
+    line-height: 1.4;
     margin-top: auto;
-    
 }
 
 footer p {
-    margin: 0;
+    margin: 5px 0;
+    font-size: inherit; /* Aseguramos que herede el tamaño uniforme */
+}
+
+footer a {
+    font-size: inherit; /* Garantizamos consistencia en los enlaces */
+    color: #ff9800;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #fff;
 }

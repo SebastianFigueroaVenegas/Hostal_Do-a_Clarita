@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <title>BASE</title>
+    <title>Hostal Doña Clarita </title>
 </head>
 <body>
     <nav>
@@ -15,10 +15,7 @@
         </a>
         <!-- Navigation Links -->
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'logout' %}"><img src="{% static 'img/cerrar-sesion.png' %}" style="height: 40px; width: 40px;"></a></li>
         </ul>
     </nav>
     <main>
@@ -26,7 +23,14 @@
     </main>
 
     <footer>
-        <p>Copyright © 1996-2015 National Geographic Society. Copyright © 2015-2024 National Geographic Partners, LLC. Todos los derechos reservados</p>
+        <p>&copy; 2024 Hostal Doña Clarita. Todos los derechos reservados.</p>
+        <p>Dirección: Avenida Principal 123, Ciudad, País</p>
+        <p>Teléfono: +56 9 1234 5678 | Correo: contacto@donaclarita.com</p>
+        <p>Síguenos: 
+            <a href="https://www.facebook.com/donaclarita" target="_blank">Facebook</a> | 
+            <a href="https://www.instagram.com/donaclarita" target="_blank">Instagram</a> | 
+            <a href="https://twitter.com/donaclarita" target="_blank">Twitter</a>
+        </p>
     </footer>
 </body>
 </html>

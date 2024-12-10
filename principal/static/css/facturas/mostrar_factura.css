@@ -1,5 +1,5 @@
 body{
-    background-image: url(https://xikara.net/wp-content/uploads/2024/02/tendencias-2024-habitacion-matrimonio-decoracion-xikara.jpeg); 
+    background-image: url(https://loscontadores.cl/wp-content/uploads/2023/11/Diferencia-entre-boleta-y-factura.webp); 
     background-repeat: no-repeat; 
     background-size: cover;
 }
@@ -119,28 +119,29 @@ h1 {
 }
 
 .platos-container table {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    border-collapse: collapse; /* Evita espacios entre bordes */
+    width: 100%; 
+    border-collapse: collapse; 
 }
 
 .platos-container th,
 .platos-container td {
-    border: 1px solid #ddd; /* Borde alrededor de cada celda */
-    padding: 10px; /* Espaciado interno */
-    text-align: left; /* Alineación del texto */
-    font-size: 16px; /* Tamaño del texto */
+    border: 1px solid #ddd; 
+    padding: 10px;
+    text-align: left; 
+    font-size: 16px; 
 }
 
 .platos-container th {
-    background-color: #007bff; /* Fondo del encabezado */
-    color: white; /* Texto blanco */
-    text-transform: uppercase; /* Texto en mayúsculas */
+    background-color: #007bff;
+    text-align: left;
+    color: white; 
+    text-transform: uppercase; 
 }
 
 .platos-container tr:nth-child(even) {
-    background-color: #f2f2f2; /* Fondo para filas pares */
+    background-color: #f2f2f2;
 }
 
 .platos-container tr:hover {
-    background-color: #e9ecef; /* Fondo al pasar el cursor */
+    background-color: #e9ecef;
 }
