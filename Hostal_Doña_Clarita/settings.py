@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'doñaClarita',  # El nombre de tu base de datos
         'USER': 'zbdcsafvib',  # El nombre de usuario proporcionado por Azure
-        'PASSWORD': '{your-password}',  # La contraseña que configuraste en Azure
+        'PASSWORD': '@Jalame12',  # La contraseña que configuraste en Azure
         'HOST': 'hostal-server.mysql.database.azure.com',  # El hostname proporcionado por Azure
         'PORT': '3306',  # El puerto de conexión, generalmente 3306 para MySQL
         'OPTIONS': {
